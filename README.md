@@ -3,7 +3,9 @@
 [![build status](https://secure.travis-ci.org/dcousens/sru.png)](http://travis-ci.org/dcousens/sru)
 [![Version](http://img.shields.io/npm/v/sru.svg)](https://www.npmjs.org/package/sru)
 
-A dead simple, performant somewhat-recently-used cache, busts after N insertions.
+A dead simple, high performance, somewhat-recently-used cache.
+
+O(1) insertion, retrieval and deletion.
 
 
 ## Examples

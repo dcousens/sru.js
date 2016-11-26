@@ -10,9 +10,7 @@ module.exports = function sru (N) {
 
     // bust?
     if (count >= N) {
-      var keys = Object.keys(map)
-      var k = keys[i]
-      delete map[k]
+      delete map[Object.keys(map)[i]]
 
       i = (i + 1) % N
       --count

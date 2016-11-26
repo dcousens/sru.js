@@ -5,7 +5,7 @@ module.exports = function sru (N) {
   var i = 0
 
   return function get (key, f) {
-    // XXX: `in` is slower, but allows for undefined results
+    // XXX: `in` supports undefined results, but is slower
     if (key in map) return map[key]
 
     // bust?

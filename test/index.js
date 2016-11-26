@@ -59,17 +59,15 @@ test('trend towards LRU', function (t) {
   function run (size) {
     var counts = {}
     var misses = {}
+    var cache = sru(size)
 
-    function cubed (x) {
+    function test (x) {
       counts[x] = (counts[x] | 0) + 1
-
-      return cache(x, function () {
+      cache(x, function () {
         misses[x] = (misses[x] | 0) + 1
-        return _cubed(x)
+        return 1
       })
     }
-
-    var cache = sru(size)
 
     // pseudorandom seed
     var hash = new Buffer('deadbeef', 'hex')
@@ -87,19 +85,17 @@ test('trend towards LRU', function (t) {
       else if (r > 0.4) z = 2
       else if (r > 0.35) z = 1
 
-      cubed(z)
+      test(z)
     }
 
     var hitRates = {}
-
-    for (z in counts) {
+    ;[1, 2, 3, 4].forEach(function (z) {
       hitRates[z] = parseFloat((1 - (misses[z] / counts[z])).toFixed(3))
-    }
-
+    })
     return hitRates
   }
 
-  t.plan(12)
+  t.plan(3)
 
   // cache size of 1, approximates their probabilities
   var rates = run(1)

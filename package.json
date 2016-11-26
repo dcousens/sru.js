@@ -1,6 +1,6 @@
 {
   "name": "sru",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A dead simple, performant somewhat-recently-used cache, busts after N insertions.",
   "main": "index.js",
   "scripts": {

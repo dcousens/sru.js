@@ -12,7 +12,7 @@ O(1) insertion, retrieval and deletion.
 
 ``` javascript
 function cubed (x) {
-	return x * x * x
+  return x * x * x
 }
 
 let sru = require('sru')

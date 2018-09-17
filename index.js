@@ -1,8 +1,8 @@
 // [0, N) elements
 module.exports = function sru (N) {
-  var map = {}
-  var count = 0
-  var i = 0
+  let map = {}
+  let count = 0
+  let i = 0
 
   return function get (key, f) {
     // XXX: `in` supports undefined results, but is slower
@@ -16,7 +16,7 @@ module.exports = function sru (N) {
       --count
     }
 
-    var value = f(key)
+    let value = f(key)
     map[key] = value
     ++count
 

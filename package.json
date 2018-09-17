@@ -1,7 +1,7 @@
 {
   "name": "sru",
   "version": "1.0.5",
-  "description": "A dead simple, high performance, somewhat-recently-used cache.",
+  "description": "A dead simple, in memory, somewhat-recently-used cache.",
   "main": "index.js",
   "scripts": {
     "lint": "standard",

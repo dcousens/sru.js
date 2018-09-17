@@ -4,8 +4,8 @@
   "description": "A dead simple, in memory, somewhat-recently-used cache.",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
-    "test": "npm run lint && npm run unit",
+    "standard": "standard",
+    "test": "npm run standard && npm run unit",
     "unit": "tape test/*.js"
   },
   "keywords": [

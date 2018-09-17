@@ -1,12 +1,12 @@
-var test = require('tape')
-var sru = require('../')
+const test = require('tape')
+const sru = require('../')
 
 function _cubed (x) {
   return x * x * x
 }
 
 test('basic example', function (t) {
-  var cache = sru(5)
+  const cache = sru(5)
 
   function cubed (x) {
     return cache(x, function () {
@@ -22,7 +22,7 @@ test('basic example', function (t) {
 })
 
 test('bust', function (t) {
-  var cache = sru(5)
+  const cache = sru(5)
 
   function cubed (x) {
     return cache(x, function (y) {
@@ -49,7 +49,7 @@ test('bust', function (t) {
   })
 })
 
-var crypto = require('crypto')
+const crypto = require('crypto')
 
 test('trend towards LRU', function (t) {
   function sha1 (x) {
@@ -57,9 +57,9 @@ test('trend towards LRU', function (t) {
   }
 
   function run (size) {
-    var counts = {}
-    var misses = {}
-    var cache = sru(size)
+    const counts = {}
+    const misses = {}
+    const cache = sru(size)
 
     function test (x) {
       counts[x] = (counts[x] | 0) + 1
@@ -70,16 +70,16 @@ test('trend towards LRU', function (t) {
     }
 
     // pseudorandom seed
-    var hash = new Buffer('deadbeef', 'hex')
+    let hash = Buffer.from('deadbeef', 'hex')
 
-    for (var i = 0; i < 3e5; ++i) {
+    for (let i = 0; i < 3e5; ++i) {
       hash = sha1(hash)
-      var r = hash.readUInt32LE(0) / 0xffffffff
+      const r = hash.readUInt32LE(0) / 0xffffffff
 
       // probabilities: i (35%), 4 (30%), 3 (20%), 2 (10%), 1 (5%)
       // meaning the cache should tend towards 1,2,3 and 4
-      // if variance doesn't kill it
-      var z = i
+      // if constiance doesn't kill it
+      let z = i
       if (r > 0.7) z = 4
       else if (r > 0.5) z = 3
       else if (r > 0.4) z = 2
@@ -88,7 +88,7 @@ test('trend towards LRU', function (t) {
       test(z)
     }
 
-    var hitRates = {}
+    const hitRates = {}
     ;[1, 2, 3, 4].forEach(function (z) {
       hitRates[z] = parseFloat((1 - (misses[z] / counts[z])).toFixed(3))
     })
@@ -98,7 +98,7 @@ test('trend towards LRU', function (t) {
   t.plan(3)
 
   // cache size of 1, approximates their probabilities
-  var rates = run(1)
+  let rates = run(1)
   t.same(rates, {
     4: 0.303,
     3: 0.2,

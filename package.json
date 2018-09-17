@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/dcousens/sru/issues"
   },
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/dcousens/sru.git"

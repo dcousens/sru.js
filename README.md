@@ -7,6 +7,12 @@ A dead simple, in memory, somewhat-recently-used cache.
 O(1) insertion, retrieval and deletion.
 
 
+## ESNext alternative
+
+If you can, **don't use this library.**
+Use an ESNext [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) instead.
+
+
 ## Examples
 
 ``` javascript
